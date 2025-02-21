@@ -151,3 +151,12 @@ export const refreshAccessToken = async (req, res) => {
 
   }
 }
+
+export const getProfile = (req, res) => {
+  try {
+    res.json(req.user);
+  } catch (error) {
+    console.log("Error in Get Profile Controller", error.message);
+    res.status(500).json({ message: "Server Error", error: error.message });
+  }
+}
