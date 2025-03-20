@@ -1,7 +1,10 @@
+Here’s how you can modify the `README` file to include the additional information you’ve provided:
+
+---
 
 # 🛍️ MERN Stack eCommerce Website
 
-An eCommerce platform built with the MERN (MongoDB, Express.js, React.js, Node.js) stack. This project is designed to provide a full-stack implementation of an online shopping application with features like product listing, user authentication, shopping cart, and order management.
+An eCommerce platform built with the MERN (MongoDB, Express.js, React.js, Node.js) stack. This project is designed to provide a full-stack implementation of an online shopping application with features like product listing, user authentication, shopping cart, order management, and payment handling.
 
 ---
 
@@ -12,8 +15,10 @@ An eCommerce platform built with the MERN (MongoDB, Express.js, React.js, Node.j
 - 🛍️ **Shopping Cart**: Add, edit, and remove items from the cart.
 - 📦 **Order Management**: Place and view orders.
 - ⚙️ **Admin Dashboard**: Manage users, products, and orders (CRUD operations).
-- 💳 **Payment Integration**: Secure online payments using Stripe/PayPal (optional).
+- 💳 **Payment Integration**: Secure online payments using **Stripe**.
 - 📱 **Responsive Design**: Optimized for both desktop and mobile devices.
+- 🔄 **Session Persistence**: Uses **Upstash Redis** for storing refresh tokens to handle session persistence.
+- 💬 **Animated Transitions**: Smooth user interface animations with **Framer Motion**.
 
 ---
 
@@ -22,21 +27,26 @@ An eCommerce platform built with the MERN (MongoDB, Express.js, React.js, Node.j
 ### Frontend
 - ⚛️ **React.js** with functional components and hooks
 - 🛤️ **React Router** for navigation
-- 🧰 **Redux Toolkit** for state management
 - 🌐 **Axios** for API requests
-- 🎨 **CSS/Bootstrap** for styling
+- 🎨 **CSS/Tailwind** for styling
+- 🎞️ **Framer Motion** for smooth animations and transitions
+- 🏦 **Stripe** for payment processing
+- 🛍️ **Zustand** for global state management
+- 🔔 **React Hot Toast** for notifications and alerts
+- 🎉 **React Confetti** for celebratory animations
+- 📊 **Recharts** for data visualization (Admin dashboard)
 
 ### Backend
-- 🟢 **Node.js** with Express.js
-- 📂 **MongoDB** as the database
-- 🔗 **Mongoose** for database operations
-- 🔑 **JWT** for authentication and authorization
-- 🔒 **Bcrypt** for password hashing
-
-### Deployment
-- 🚀 **Frontend**: Hosted on Netlify/Vercel
-- 🌐 **Backend**: Hosted on Heroku/Render
-- 🛢️ **Database**: MongoDB Atlas
+- 🟢 **Node.js** with **Express.js**
+- 📂 **MongoDB (Atlas)** as the database
+- 🔗 **Mongoose** for interacting with MongoDB using schema-based models
+- 🔑 **JWT** for authentication and authorization (access & refresh tokens)
+- 🔒 **Bcryptjs** for password hashing
+- 🍪 **Cookie-parser** for reading and managing HTTP-only cookies
+- 🛢️ **Upstash Redis** for session management and storing refresh tokens
+- 🌩️ **Cloudinary** for storing product images and media
+- 💳 **Stripe** for payment processing
+- 🧰 **Nodemon** for auto-restarting the server in development
 
 ---
 
@@ -45,50 +55,56 @@ An eCommerce platform built with the MERN (MongoDB, Express.js, React.js, Node.j
 ### 📋 Prerequisites
 - 🖥️ [Node.js](https://nodejs.org/) installed on your system
 - 🛢️ MongoDB installed or use [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
-- 💳 A Stripe/PayPal account for payment integration (optional)
+- 💳 A Stripe account for payment integration
 
 ### 🏗️ Steps to Run Locally
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/mern-ecommerce.git
+   git clone https://github.com/krjofficial/mern-ecomm.git
    cd mern-ecommerce
+   ```
 
 2. Install dependencies:
    - For the backend:
-     ```
+     ```bash
      cd backend
      npm install
      ```
    - For the frontend:
-     ```
+     ```bash
      cd frontend
      npm install
      ```
 
 3. Configure environment variables:
-   - Create a `.env` file in the `backend` directory and add:
+   - Create a `.env` file in the `backend` directory and add the following:
      ```
      PORT=5000
      MONGO_URI=your-mongodb-connection-string
      JWT_SECRET=your-jwt-secret
-     STRIPE_API_KEY=your-stripe-api-key (optional)
+     STRIPE_API_KEY=your-stripe-api-key
+     COOKIE_SECRET=your-cookie-secret
+     REDIS_URL=your-redis-url
+     CLOUDINARY_CLOUD_NAME=your-cloudinary-cloud-name
+     CLOUDINARY_API_KEY=your-cloudinary-api-key
+     CLOUDINARY_API_SECRET=your-cloudinary-api-secret
      ```
 
 4. Start the development servers:
    - Backend:
-     ```
+     ```bash
      cd backend
      npm run dev
      ```
    - Frontend:
-     ```
+     ```bash
      cd frontend
-     npm start
+     npm run dev
      ```
 
 5. Visit the application:
-   - 🌐 Frontend: `http://localhost:3000`
+   - 🌐 Frontend: `http://localhost:5173`
    - 🛠️ Backend API: `http://localhost:5000`
 
 ---
@@ -101,9 +117,7 @@ frontend/
 ├── public/
 ├── src/
 │   ├── components/
-│   ├── pages/
-│   ├── redux/
-│   ├── services/
+│   ├── pages/ 
 │   ├── App.js
 │   └── index.js
 ```
@@ -122,12 +136,15 @@ backend/
 
 ---
 
-🛤️ Roadmap
- - ⭐ Implement product reviews and ratings
- - 📄 Add pagination for product listings
- - 🔍 Integrate advanced search and filter features
- - 📧 Add email notifications for order updates
- - 💳 Expand payment options (Stripe/PayPal)
+## 🛤️ Roadmap
+
+- ⭐ Implement product reviews and ratings
+- 📄 Add pagination for product listings
+- 🔍 Integrate advanced search and filter features
+- 📧 Add email notifications for order updates
+- 💳 Expand payment options (Stripe/PayPal)
+- 🔒 Enhance security features (e.g., OAuth, two-factor authentication)
+- 🌎 Improve multi-language and multi-currency support
 
 ---
 
@@ -137,15 +154,15 @@ Contributions are welcome! To contribute:
 
 1. Fork the project.
 2. Create your feature branch:
-   ```
+   ```bash
    git checkout -b feature/YourFeature
    ```
 3. Commit your changes:
-   ```
+   ```bash
    git commit -m 'Add some feature'
    ```
 4. Push to the branch:
-   ```
+   ```bash
    git push origin feature/YourFeature
    ```
 5. Open a pull request.
@@ -164,3 +181,7 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 - [React.js Documentation](https://reactjs.org/)
 - [Node.js Documentation](https://nodejs.org/)
 - [Express.js Documentation](https://expressjs.com/)
+- [Stripe API Documentation](https://stripe.com/docs)
+- [Upstash Redis](https://upstash.com/)
+- [Cloudinary](https://cloudinary.com/)
+- [Framer Motion](https://www.framer.com/motion/)
