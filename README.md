@@ -1,6 +1,3 @@
-Here’s how you can modify the `README` file to include the additional information you’ve provided:
-
----
 
 # 🛍️ MERN Stack eCommerce Website
 
